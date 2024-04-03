@@ -1,9 +1,13 @@
 <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="https://estaticos-cdn.prensaiberica.es/clip/300e999b-0ce7-4ab4-84d8-08a108ae8394_16-9-discover-aspect-ratio_default_0.jpg" alt="Card image cap">
+    <img class="card-img-top" src="{{heroe.urlImg}} " alt="Card image cap">
     <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">{{heroe.nombre| uppercase }}</h5>
+        @if (heroe.razaHumana) {
+        <p>Raza: Humana</p>
+        } @else {
+        <p>Raza: NO Humana</p>
+        }
+        <p>Identidad: {{heroe.identidad}}</p>
+        <p>Fecha de creacion: {{heroe.fechaCreacion| date:'dd/MM/yyyy'}}</p>
     </div>
 </div>

@@ -1,0 +1,17 @@
+
+
+.navbar .nav-link {
+  color: #fff !important;
+}
+.navbar{
+    background-color: rgb(64, 58, 99);
+    .navbar-brand{
+      img{
+        max-height: 50px;
+      }
+    }
+    .link{
+      display: flex;
+      align-items: center;
+    }
+}
