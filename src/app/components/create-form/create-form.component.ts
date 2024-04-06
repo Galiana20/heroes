@@ -66,7 +66,7 @@ export class CreateFormComponent implements OnInit {
       .subscribe(hero => {
         this.dialogRef.close(hero);
       });
-      this._snackBar.open('Se ha añadido el heroe correctamente ');
+      this._snackBar.open('Se ha añadido el heroe correctamente ',"X",{duration: 3000});
   }
 
   updateHero(): void {
@@ -74,7 +74,7 @@ export class CreateFormComponent implements OnInit {
       .subscribe(() => {
         this.dialogRef.close(this.data);
       });
-      this._snackBar.open('Se ha editado el heroe correctamente ');
+      this._snackBar.open('Se ha editado el heroe correctamente ',"X",{duration: 3000});
   }
 
 }

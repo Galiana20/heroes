@@ -66,7 +66,7 @@ export class ListComponent implements OnInit {
           });
       }
       this.getHeroes();
-      this._snackBar.open('Se ha eliminado el heroe correctamente ');
+      this._snackBar.open('Se ha eliminado el heroe correctamente ',"X",{duration: 3000});
 
     });
     
