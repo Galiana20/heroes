@@ -14,6 +14,5 @@ export class CardComponent implements OnInit{
   @Input() heroe: Heroe ;
 
   ngOnInit(): void {
-    console.log(this.heroe);
   }
 }

@@ -5,23 +5,26 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { CreateFormComponent } from '../create-form/create-form.component';
 import { HeroesService } from '../../services/heroes.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,MatSnackBarModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
 export class ListComponent implements OnInit {
   heroes: Heroe[];
+  alertVisible = false;
 
-  constructor(public dialog: MatDialog, private heroesService: HeroesService) { }
+  constructor(public dialog: MatDialog, private heroesService: HeroesService,private _snackBar: MatSnackBar) {
+   }
 
   ngOnInit(): void {
     this.getHeroes();
-    console.log(this.heroes);
+
   }
   addHeroe(): void {
     const dialogRef = this.dialog.open(CreateFormComponent, {
@@ -31,10 +34,7 @@ export class ListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(this.heroes);
       this.getHeroes();
-      console.log(this.heroes);
-
     });
 
   }
@@ -47,10 +47,7 @@ export class ListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(this.heroes);
       this.getHeroes();
-      console.log(this.heroes);
-
     });
 
   }
@@ -66,11 +63,11 @@ export class ListComponent implements OnInit {
       if (result) {
         this.heroesService.deleteHero(hero.id)
           .subscribe(() => {
-            // Aquí podrías realizar alguna acción después de eliminar el héroe, por ejemplo, cerrar el diálogo
-            console.log(hero);
           });
       }
       this.getHeroes();
+      this._snackBar.open('Se ha eliminado el heroe correctamente ');
+
     });
     
   }

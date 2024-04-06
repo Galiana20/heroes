@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HeroesService } from '../../services/heroes.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -36,7 +37,8 @@ export class CreateFormComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<CreateFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private heroesService: HeroesService
+    private heroesService: HeroesService,
+    private _snackBar: MatSnackBar
   ) { }
 
   update = false;
@@ -57,13 +59,14 @@ export class CreateFormComponent implements OnInit {
 
 
   addHero(): void {
-    console.log(this.data);
+
     this.data.nombre = this.data.nombre.trim();
     if (!this.data.nombre || !this.data.urlImg || !this.data.fechaCreacion || !this.data.identidad) { return; }
     this.heroesService.addHero(this.data)
       .subscribe(hero => {
         this.dialogRef.close(hero);
       });
+      this._snackBar.open('Se ha añadido el heroe correctamente ');
   }
 
   updateHero(): void {
@@ -71,6 +74,7 @@ export class CreateFormComponent implements OnInit {
       .subscribe(() => {
         this.dialogRef.close(this.data);
       });
+      this._snackBar.open('Se ha editado el heroe correctamente ');
   }
 
 }
