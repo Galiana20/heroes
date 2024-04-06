@@ -1,3 +1,7 @@
+<mat-form-field class="example-full-width" style="margin-top: 2.5%;">
+  <mat-label>Filtrar por nombre</mat-label>
+  <input  [(ngModel)]="filtroNombre" matInput placeholder="nombre">
+</mat-form-field>
 <table class="table">
   <thead>
     <tr>
@@ -11,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    @for (heroe of heroes; track $index) {
+    @for (heroe of filtrarHeroes(); track $index) {
     <tr>
       <th scope="row">{{heroe.id}}</th>
       <td><img src="{{heroe.urlImg}} "></td>

@@ -6,18 +6,21 @@ import { CreateFormComponent } from '../create-form/create-form.component';
 import { HeroesService } from '../../services/heroes.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { FormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
 
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule,MatSnackBarModule],
+  imports: [CommonModule,MatSnackBarModule,FormsModule,MatInputModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
 export class ListComponent implements OnInit {
   heroes: Heroe[];
   alertVisible = false;
+  filtroNombre: string = '';
 
   constructor(public dialog: MatDialog, private heroesService: HeroesService,private _snackBar: MatSnackBar) {
    }
@@ -26,6 +29,14 @@ export class ListComponent implements OnInit {
     this.getHeroes();
 
   }
+
+  filtrarHeroes() {
+    return this.heroes.filter(heroe =>
+      heroe.nombre.toLowerCase().includes(this.filtroNombre.toLowerCase())
+    );
+  }
+
+
   addHeroe(): void {
     const dialogRef = this.dialog.open(CreateFormComponent, {
       data: {},
