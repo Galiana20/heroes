@@ -1,1 +1,35 @@
-<p>create-form works!</p>
+<h2 mat-dialog-title>Añadir nuevo heroe</h2>
+<mat-dialog-content>
+  <p>Rellena los campos</p>
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="data.nombre" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Url IMG</mat-label>
+    <input matInput [(ngModel)]="data.urlImg" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Fecha de creacion</mat-label>
+    <input type="date" matInput [(ngModel)]="data.fechaCreacion" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Identidad</mat-label>
+    <input matInput [(ngModel)]="data.identidad">
+  </mat-form-field>
+  <section class="example-section">
+    <mat-checkbox class="example-margin" [(ngModel)]="data.razaHumana">Humano</mat-checkbox>
+  </section>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cerrar </button>
+  @if (update) {
+  <button mat-button [mat-dialog-close]="data.animal" [disabled]="!data.nombre || !data.urlImg || !data.fechaCreacion "
+    (click)="updateHero()">update heroe</button>
+  }@else {
+  <button mat-button [mat-dialog-close]="data.animal" [disabled]="!data.nombre || !data.urlImg || !data.fechaCreacion "
+    (click)="addHero()">Guardar heroe</button>
+  }
+
+
+</mat-dialog-actions>

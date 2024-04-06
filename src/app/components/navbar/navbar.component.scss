@@ -4,7 +4,7 @@
   color: #fff !important;
 }
 .navbar{
-    background-color: rgb(64, 58, 99);
+    background-color: rgb(64, 58, 99)!important;
     .navbar-brand{
       img{
         max-height: 50px;
@@ -13,5 +13,9 @@
     .link{
       display: flex;
       align-items: center;
+    }
+    .icon{
+      margin: 5px;
+      color: white;
     }
 }

@@ -1,11 +1,11 @@
-<div class="card" style="width: 18rem;">
+<div class="card">
     <img class="card-img-top" src="{{heroe.urlImg}} " alt="Card image cap">
     <div class="card-body">
         <h5 class="card-title">{{heroe.nombre| uppercase }}</h5>
         @if (heroe.razaHumana) {
         <p>Raza: Humana</p>
         } @else {
-        <p>Raza: NO Humana</p>
+        <p>Raza: No humana</p>
         }
         <p>Identidad: {{heroe.identidad}}</p>
         <p>Fecha de creacion: {{heroe.fechaCreacion| date:'dd/MM/yyyy'}}</p>

@@ -1,0 +1,18 @@
+img {
+    height: 50px;
+}
+
+td {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+button{
+    margin-left: 15px;
+    svg{
+        margin-bottom: 3px;
+    }
+}
+.cdk-global-overlay-wrapper{
+    display: flex !important;
+}
